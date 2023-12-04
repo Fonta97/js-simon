@@ -29,8 +29,6 @@ function hideNumbers() {
 // funzione gioco simone dice con scomparsa dallo schermo
 function simonedice() {
 
-    // aggiungo la classe hidden per nascondere i numeri 
-    containerRandomSimon.classList.add("hidden");
     const arrayUserNum = [];
 
     // prompt con push nell'array dei numeri detti dall'utente
