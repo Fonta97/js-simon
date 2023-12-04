@@ -1,3 +1,4 @@
+// generazione numeri random
 const arrayRandom = [];
 
 for (let i = 0; i < 5; i++) {
@@ -6,17 +7,24 @@ for (let i = 0; i < 5; i++) {
     arrayRandom.push(randomNum);
 }
 
+// seleziono output nel document html dei numeri random che ci dice simone
 const containerRandomSimon = document.querySelector(".simonOutput");
 
-containerRandomSimon.innerHTML = arrayRandom;
+containerRandomSimon.innerHTML = "simone dice" + arrayRandom;
 
-// delay numeri tiemout numeri 
+// delay numeri timeout numeri
+setTimeout(hideNumbers, 2500);
+// delay esecuzione funzione simone dice (non può essere uguale come tempo di timeout alla funzione hideNumbers se uso il prompt)
 setTimeout(simonedice, 5000);
 
 
 /*********************************************************/
 /*                      FUNZIONI                         */
 /*********************************************************/
+
+function hideNumbers() {
+    containerRandomSimon.classList.add("hidden");
+}
 
 // funzione gioco simone dice con scomparsa dallo schermo
 function simonedice() {
