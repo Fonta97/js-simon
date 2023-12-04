@@ -9,17 +9,53 @@ for (let i = 0; i < 5; i++) {
 const containerRandomSimon = document.querySelector(".simonOutput");
 
 containerRandomSimon.innerHTML = arrayRandom;
+
+// delay numeri tiemout numeri 
 setTimeout(simonedice, 5000);
+
 
 /*********************************************************/
 /*                      FUNZIONI                         */
 /*********************************************************/
 
+// funzione gioco simone dice con scomparsa dallo schermo
 function simonedice() {
-    containerRandomSimon.classList.add("hidden");
 
+    // aggiungo la classe hidden per nascondere i numeri 
+    containerRandomSimon.classList.add("hidden");
+    const arrayUserNum = [];
+
+    // prompt con push nell'array dei numeri detti dall'utente
+    for (let i = 0; i < 5; i++) {
+        userNum = parseInt(prompt("Ti ricordi i numeri? Inseriscili!"));
+        arrayUserNum.push(userNum);
+    }
+
+    // array numeri indovinati
+    const arrayCorrectNum = [];
+
+    // array numeri errati
+    const arrayMissedNum = [];
+
+    // controllo dei numeri arrayuser con quelli dell'array random  
+    for (let i = 0; i < 5; i++) {
+        if (arrayUserNum.includes(arrayRandom[i])) {
+            arrayCorrectNum.push(arrayRandom[i]);
+        } else {
+            arrayMissedNum.push(arrayRandom[i]);
+        }
+    }
+
+    // controllo per stampare messaggio di vittoria o sconfitta con insieme quali numeri ha sbagliato l'utente
+    if (arrayMissedNum.length >= 1) {
+        console.log("hai perso, mancavano i numeri: ", arrayMissedNum);
+    } else {
+        console.log("hai vinto bomber!, hai la memoria di un elefante!");
+    }
 }
 
+
+// funzione random numero compreso tra min e max
 function randomNumMM(min, max) {
     const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     return randomNumber;
